@@ -1,24 +1,190 @@
-@import "tailwindcss";
+/* globals.css */
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* -----------------------
+   1. RESET & BASE
+------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Use a colorful gradient background */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* The main container (centered, white background, subtle shadow) */
+main {
+  width: 90%;
+  max-width: 800px;
+  min-height: 70vh;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* -----------------------
+   2. HEADINGS & TEXT
+------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Links with a hover effect */
+a {
+  color: #0070f3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+
+/* -----------------------
+   3. BUTTONS
+------------------------ */
+button {
+  background-color: #0070f3;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  background-color: #0059c9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -----------------------
+   4. FORMS (OPTIONAL)
+------------------------ */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 4px rgba(0, 112, 243, 0.2);
+}
+
+/* -----------------------
+   5. PROFILE SECTION
+------------------------ */
+/* 
+   Container for image + buttons. 
+   - Border, padding, column layout on mobile.
+*/
+.profile-section {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* spacing between items */
+  background: #fafafa;
+}
+
+/* 
+   Switch to row layout on tablets & up
+   so image and buttons sit side by side.
+*/
+@media (min-width: 768px) {
+  .profile-section {
+    flex-direction: row;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* 
+   If you want a different layout on larger (laptop/desktop) screens,
+   you can add another breakpoint at 1024px or 1200px.
+   For example:
+*/
+@media (min-width: 1024px) {
+  .profile-section {
+    /* e.g., space them out more, etc. */
+    justify-content: space-around;
+  }
+}
+
+/* Profile image styling */
+.profile-section img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons grouped together if desired */
+.profile-buttons {
+  display: flex;
+  flex-direction: column; /* stack buttons vertically on small screens */
+  gap: 0.5rem;
+}
+
+/* Switch to row on larger screens */
+@media (min-width: 768px) {
+  .profile-buttons {
+    flex-direction: row;
+  }
 }
